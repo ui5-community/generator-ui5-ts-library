@@ -1,0 +1,39 @@
+{
+  "name": "generator-ui5-ts-library",
+  "version": "1.0.0",
+  "description": "UI5 Library generator for TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd test && yo ../../generator-ui5-ts-library"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ui5-community/generator-ui5-ts-library.git"
+  },
+  "keywords": [
+    "ui5",
+    "typscript",
+    "yeoman",
+    "generator"
+  ],
+  "author": "Wouter Lemaire",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ui5-community/generator-ui5-ts-library/issues"
+  },
+  "homepage": "https://github.com/ui5-community/generator-ui5-ts-library#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "glob": "^7.1.6",
+    "package-json": "^7.0.0",
+    "semver": "^7.3.7",
+    "yeoman-generator": "^5.5.2",
+    "yosay": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "jest": "^27.4.7",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^6.2.0"
+  }
+}
