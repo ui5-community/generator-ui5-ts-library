@@ -19,6 +19,7 @@ Start the control sample page in watch mode:
 ```sh
 npm run watch
 ```
+(In case of using `yarn` you might face errors running this command. This is known and can be solved as described [here](https://github.com/ui5-community/generator-ui5-ts-library/issues/2#issuecomment-1205624296))
 
 This opens the example control sample page in a browser window and launches the project in watch mode, which triggers several things at once whenever any code is changed:
 * A re-generation of the TypeScript interfaces for the controls (so TypeScript knows all the generated control methods)
