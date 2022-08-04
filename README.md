@@ -8,7 +8,7 @@ Generator for kickstaring UI5 libraries using TypeScript to bundle your own Cust
 
 ```bash
 $> npm i -g yo
-$> yo easy-ui5 ui5-ts-library
+$> yo easy-ui5 ts-library
 
      _-----_
     |       |    ╭──────────────────────────╮
