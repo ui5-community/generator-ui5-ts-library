@@ -1,5 +1,9 @@
 "use strict";
 const Generator = require("yeoman-generator");
+// patches the Generator for the install tasks as new custom install
+// tasks produce ugly errors! (Related issue: https://github.com/yeoman/environment/issues/309)
+require('lodash').extend(Generator.prototype, require('yeoman-generator/lib/actions/install'))
+
 const chalk = require("chalk");
 const yosay = require("yosay");
 const path = require("path");
