@@ -2,7 +2,7 @@
 
 [![License Status][license-image]][license-url]
 
-Generator for kickstaring UI5 libraries using TypeScript to bundle your own Custom UI5 Controls. This generator was build as a plug-in for the community project [Easy-UI5](https://github.com/SAP/generator-easy-ui5/) by [SAP](https://github.com/SAP/).
+Generator for kickstaring UI5 libraries using TypeScript to bundle your own Custom UI5 Controls. This generator was built as a plug-in for the community project [Easy-UI5](https://github.com/SAP/generator-easy-ui5/) by [SAP](https://github.com/SAP/).
 
 ## Usage with easy-ui5
 
