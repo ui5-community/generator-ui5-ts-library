@@ -26,6 +26,10 @@ module.exports = class extends Generator {
             return `@${framework.toLowerCase()}/${typesName}`;
         };
 
+        const isMetadataOptionsAvailable = function(version) {
+            return semver.gte(version, "1.110.0");
+        };
+
         // Have Yeoman greet the user.
         if (!this.options.embedded) {
             this.log(
@@ -120,6 +124,11 @@ module.exports = class extends Generator {
             // determine the ts-types and version
             this.config.set("tstypes", getTypePackageFor(props.framework, props.frameworkVersion));
             this.config.set("tstypesVersion", props.frameworkVersion);
+
+            // determine how the metadata object can be typed
+            const metadataOptionsAvailable = isMetadataOptionsAvailable(props.frameworkVersion);
+            this.config.set("metadataOptionsImportLine", metadataOptionsAvailable ? 'import type { MetadataOptions } from "sap/ui/core/Element";\n' : "");
+            this.config.set("metadataOptionsType", metadataOptionsAvailable ? "MetadataOptions" : "object");
 
             this.config.set("namespaceURI", props.namespace.split(".").join("/"));
             this.config.set(
