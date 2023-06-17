@@ -1,30 +1,18 @@
 {
-    "compilerOptions": {
-        "target": "es2015",
-        "module": "es2015",
-        "moduleResolution": "node",
-        "skipLibCheck": true,
-        "preserveConstEnums": true,
-        "sourceMap": false,
-        "allowJs": true,
-        "strict": true,
-        "strictNullChecks": true,
-        "strictPropertyInitialization": true,
-        "rootDir": "./",
-        "outDir": "./src-gen",
-        "baseUrl": "./",
-        "typeRoots": [
-            "./node_modules/@types",
-            "./node_modules/<%= tstypes %>"
-        ],
-        "paths": {
-            "<%= librarynamespaceURI %>/*": [
-                "./src/<%= librarynamespaceURI %>/*"
-            ]
-        }
-    },
-    "include": [
-        "./src/**/*",
-        "./test/**/*"
-    ]
+	"compilerOptions": {
+		"target": "es2022",
+		"module": "es2022",
+		"moduleResolution": "node",
+		"skipLibCheck": true,
+		"allowJs": true,
+		"strict": true,
+		"strictNullChecks": false,
+		"strictPropertyInitialization": false,
+		"rootDir": "./",
+		"types": ["<%= tstypes %>", "@types/jquery", "@types/qunit"],
+		"paths": {
+			"<%= libURI %>/*": ["./src/<%= libURI %>/*"]
+		}
+	},
+	"include": ["./src/**/*", "./test/**/*"]
 }
