@@ -1,39 +1,58 @@
 {
-  "name": "generator-ui5-ts-library",
-  "version": "1.0.0",
-  "description": "UI5 Library generator for TypeScript",
-  "main": "index.js",
-  "scripts": {
-    "test": "cd test && yo ../../generator-ui5-ts-library"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ui5-community/generator-ui5-ts-library.git"
-  },
-  "keywords": [
-    "ui5",
-    "typscript",
-    "yeoman",
-    "generator"
-  ],
-  "author": "Wouter Lemaire",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ui5-community/generator-ui5-ts-library/issues"
-  },
-  "homepage": "https://github.com/ui5-community/generator-ui5-ts-library#readme",
-  "dependencies": {
-    "chalk": "^4.1.2",
-    "glob": "^7.1.6",
-    "package-json": "^7.0.0",
-    "semver": "^7.3.7",
-    "yeoman-generator": "^5.5.2",
-    "yosay": "^2.0.2"
-  },
-  "devDependencies": {
-    "@types/jest": "^27.4.0",
-    "jest": "^27.4.7",
-    "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^6.2.0"
-  }
+	"name": "generator-ui5-ts-library",
+	"version": "1.1.0",
+	"description": "Yeoman-based (sub-)generator for a basic UI5 library based on TypeScript",
+	"main": "generators/app/index.js",
+	"type": "module",
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"lint:staged": "lint-staged",
+		"format": "prettier --write .",
+		"format:staged": "pretty-quick --staged --verbose",
+		"test": "cd test && yo ../../generator-ui5-ts-library",
+		"prepare": "node ./.husky/skip.js || husky install",
+		"hooks:pre-commit": "npm-run-all --sequential format:staged lint:staged"
+	},
+	"keywords": [
+		"yeoman-generator",
+		"ui5",
+		"openui5",
+		"sapui5",
+		"library",
+		"typescript"
+	],
+	"author": "Wouter Lemaire, Peter Muessig",
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ui5-community/generator-ui5-ts-library.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ui5-community/generator-ui5-ts-library/issues"
+	},
+	"homepage": "https://github.com/ui5-community/generator-ui5-ts-library#readme",
+	"dependencies": {
+		"chalk": "^5.2.0",
+		"glob": "^10.2.7",
+		"package-json": "^8.1.1",
+		"yeoman-generator": "^5.9.0",
+		"yosay": "^2.0.2"
+	},
+	"devDependencies": {
+		"@prettier/plugin-xml": "^2.2.0",
+		"eslint": "^8.42.0",
+		"eslint-plugin-jsdoc": "^46.2.6",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.2",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.8.8",
+		"prettier-plugin-properties": "^0.2.0",
+		"pretty-quick": "^3.1.3",
+		"yeoman-assert": "^3.1.1",
+		"yeoman-test": "^7.4.0"
+	},
+	"overrides": {
+		"minimist": ">=1.2.6"
+	}
 }

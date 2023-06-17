@@ -2,12 +2,12 @@
 
 [![License Status][license-image]][license-url]
 
-Generator for kickstaring UI5 libraries using TypeScript to bundle your own Custom UI5 Controls. This generator was built as a plug-in for the community project [Easy-UI5](https://github.com/SAP/generator-easy-ui5/) by [SAP](https://github.com/SAP/).
+[Yeoman](https://yeoman.io/) generator kickstarting the development of UI5 libraries using TypeScript. The generator incorporates the latest best-practices, is using the [UI5 Tooling](https://sap.github.io/ui5-tooling/) and the UI5 Tooling extensions provided by the [UI5 community](https://github.com/ui5-community/ui5-ecosystem-showcase/). It is maintained by the UI5 community and SAPUI5 developers. This generator was build as a plug-in for the community project [Easy-UI5](https://github.com/SAP/generator-easy-ui5/) by [SAP](https://github.com/SAP/).
 
-## Usage with easy-ui5
+## Usage with Easy-UI5
 
 ```bash
-$> npm i -g yo
+$> npm i -g yo generator-easy-ui5
 $> yo easy-ui5 ts-library
 
      _-----_
@@ -54,8 +54,9 @@ We welcome any type of contribution (code contributions, pull requests, issues) 
 
 This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the LICENSE file.
 
-[license-image]: https://img.shields.io/github/license/lemaiwo/generator-ui5-ts-library.svg
-[license-url]: https://github.com/lemaiwo/generator-ui5-ts-library/blob/main/LICENSE
+[license-image]: https://img.shields.io/github/license/ui5-community/generator-ui5-ts-library.svg
+[license-url]: https://github.com/ui5-community/generator-ui5-ts-library/blob/main/LICENSE
 
----------------------------
-###### This generator is provided to you by Wouter Lemaire
+---
+
+###### This generator is provided to you by Wouter Lemaire and contributors :wink:

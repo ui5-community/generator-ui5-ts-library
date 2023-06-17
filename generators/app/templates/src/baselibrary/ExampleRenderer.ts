@@ -12,7 +12,7 @@ import { ExampleColor } from "./library";
  * Example renderer.
  * @namespace
  */
-const ExampleRenderer = {
+export default {
 	apiVersion: 2, // usage of DOM Patcher
 
 	/**
@@ -22,8 +22,7 @@ const ExampleRenderer = {
 	 * @param {Example} control The control instance to be rendered
 	 */
 	render: function (rm: RenderManager, control: Example) {
-
-		const i18n = Core.getLibraryResourceBundle("<%= librarynamespace %>") as ResourceBundle;
+		const i18n = Core.getLibraryResourceBundle("<%= libId %>") as ResourceBundle;
 
 		rm.openStart("div", control);
 		if (control.getColor() === ExampleColor.Highlight) {
@@ -31,11 +30,8 @@ const ExampleRenderer = {
 		} else {
 			rm.class("myLibPrefixExample");
 		}
-		rm.openEnd( );
-		rm.text(i18n.getText("ANY_TEXT") + ": " + control.getText());
+		rm.openEnd();
+		rm.text(`${i18n.getText("ANY_TEXT")}: ${control.getText()}`);
 		rm.close("div");
-	}
-
+	},
 };
-
-export default ExampleRenderer;
