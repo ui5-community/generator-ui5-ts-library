@@ -33,5 +33,5 @@ export default {
 		rm.openEnd();
 		rm.text(`${i18n.getText("ANY_TEXT")}: ${control.getText()}`);
 		rm.close("div");
-	},
+	}
 };
