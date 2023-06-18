@@ -4,6 +4,7 @@
 	"description": "UI5 Library: <%= libId %>",
 	"author": "<%= author %>",
 	"license": "Apache-2.0",
+	"types": "dist/index.d.ts",
 	"scripts": {
 		"clean": "rimraf dist coverage",
 		"build": "npm run build:ts-interfaces && ui5 build --clean-dest",

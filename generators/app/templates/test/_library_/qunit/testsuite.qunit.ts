@@ -4,26 +4,26 @@ export default {
 		bootCore: true,
 		ui5: {
 			libs: "sap.ui.core,<%= libId %>",
-			theme: "sap_horizon",
+			theme: "<%= defaultTheme %>",
 			noConflict: true,
-			preload: "auto",
+			preload: "auto"
 		},
 		qunit: {
 			version: 2,
-			reorder: false,
+			reorder: false
 		},
 		sinon: {
 			version: 4,
 			qunitBridge: true,
-			useFakeTimers: false,
+			useFakeTimers: false
 		},
-		module: "./{name}.qunit",
+		module: "./{name}.qunit"
 	},
 	tests: {
 		// test file for the Example control
 		Example: {
 			title: "QUnit Test for Example",
-			_alternativeTitle: "QUnit tests: <%= libId %>.Example",
-		},
-	},
+			_alternativeTitle: "QUnit tests: <%= libId %>.Example"
+		}
+	}
 };

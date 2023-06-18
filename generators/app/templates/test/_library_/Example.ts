@@ -8,5 +8,5 @@ new Example({
 	color: ExampleColor.Highlight,
 	press: (event) => {
 		alert(event.getSource());
-	},
+	}
 }).placeAt("content");

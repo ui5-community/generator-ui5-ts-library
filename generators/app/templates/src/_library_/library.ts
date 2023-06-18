@@ -15,13 +15,13 @@ sap.ui.getCore().initLibrary({
 	version: "${version}",
 	dependencies: [
 		// keep in sync with the ui5.yaml and .library files
-		"sap.ui.core",
+		"sap.ui.core"
 	],
 	types: ["<%= libId %>.ExampleColor"],
 	interfaces: [],
 	controls: ["<%= libId %>.Example"],
 	elements: [],
-	noLibraryCSS: false, // if no CSS is provided, you can disable the library.css load here
+	noLibraryCSS: false // if no CSS is provided, you can disable the library.css load here
 });
 
 // get the library object from global object space because all enums must be attached to it to be usable as UI5 types
@@ -47,7 +47,7 @@ export enum ExampleColor {
 	 * Highlight color
 	 * @public
 	 */
-	Highlight = "Highlight",
+	Highlight = "Highlight"
 }
 // FIXME: this line is planned to become obsolete and may need to be removed later
 thisLib.ExampleColor = ExampleColor; // add the enum to the library; this is important because UI5 otherwise cannot identify the type and will skip type checking for properties of this type

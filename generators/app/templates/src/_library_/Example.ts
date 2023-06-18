@@ -35,7 +35,7 @@ export default class Example extends Control {
 			text: {
 				type: "string",
 				group: "Data",
-				defaultValue: null,
+				defaultValue: null
 			},
 			/**
 			 * The color to use (default to "Default" color).
@@ -43,15 +43,15 @@ export default class Example extends Control {
 			color: {
 				type: "<%= libId %>.ExampleColor",
 				group: "Appearance",
-				defaultValue: ExampleColor.Default,
-			},
+				defaultValue: ExampleColor.Default
+			}
 		},
 		events: {
 			/**
 			 * Event is fired when the user clicks the control.
 			 */
-			press: {},
-		},
+			press: {}
+		}
 	};
 
 	static renderer: typeof ExampleRenderer = ExampleRenderer;

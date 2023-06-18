@@ -18,7 +18,7 @@ export default class extends Generator {
 	constructor(args, opts) {
 		super(args, opts, {
 			// disable the Yeoman 5 package-manager logic (auto install)!
-			customInstallTask: "disabled",
+			customInstallTask: "disabled"
 		});
 	}
 
@@ -30,12 +30,12 @@ export default class extends Generator {
 
 		const minFwkVersion = {
 			OpenUI5: "1.90.1", //"1.60.0",
-			SAPUI5: "1.90.0", //"1.77.0"
+			SAPUI5: "1.90.0" //"1.77.0"
 		};
 
 		const fwkCDNDomain = {
 			OpenUI5: "sdk.openui5.org",
-			SAPUI5: "ui5.sap.com",
+			SAPUI5: "ui5.sap.com"
 		};
 
 		const getTypePackageFor = function (framework, version = "99.99.99") {
@@ -59,14 +59,14 @@ export default class extends Generator {
 
 					return "Please use alpha numeric characters and dots only for the namespace.";
 				},
-				default: "com.myorg.mylib",
+				default: "com.myorg.mylib"
 			},
 			{
 				type: "list",
 				name: "framework",
 				message: "Which framework do you want to use?",
 				choices: ["OpenUI5", "SAPUI5"],
-				default: "OpenUI5",
+				default: "OpenUI5"
 			},
 			{
 				when: (response) => {
@@ -81,7 +81,7 @@ export default class extends Generator {
 					try {
 						return (
 							await packageJson(npmPackage, {
-								version: "*", // use highest version, not latest!
+								version: "*" // use highest version, not latest!
 							})
 						).version;
 					} catch (ex) {
@@ -91,26 +91,26 @@ export default class extends Generator {
 				},
 				validate: (v) => {
 					return (v && semver.valid(v) && semver.gte(v, this._minFwkVersion)) || chalk.red(`Framework requires the min version ${this._minFwkVersion} due to the availability of the ts-types!`);
-				},
+				}
 			},
 			{
 				type: "input",
 				name: "author",
 				message: "Who is the author of the application?",
-				default: this.user.git.name(),
+				default: this.user.git.name()
 			},
 			{
 				type: "confirm",
 				name: "newdir",
 				message: "Would you like to create a new directory for the application?",
-				default: true,
+				default: true
 			},
 			{
 				type: "confirm",
 				name: "initrepo",
 				message: "Would you like to initialize a local github repository for the application?",
-				default: true,
-			},
+				default: true
+			}
 		];
 
 		return this.prompt(prompts).then((props) => {
@@ -147,6 +147,21 @@ export default class extends Generator {
 			// CDN domain
 			this.config.set("cdnDomain", fwkCDNDomain[props.framework]);
 
+			// default theme
+			if (semver.gte(props.frameworkVersion, "1.108.0")) {
+				this.config.set("defaultTheme", "sap_horizon");
+				this.config.set("availableThemes", {
+					sap_horizon: ["sap_horizon", "sap_horizon_dark", "sap_horizon_hcw", "sap_horizon_hcb"],
+					sap_fiori_3: ["sap_fiori_3", "sap_fiori_3_dark", "sap_fiori_3_hcw", "sap_fiori_3_hcb"]
+				});
+			} else {
+				this.config.set("defaultTheme", "sap_fiori_3");
+				this.config.set("availableThemes", {
+					sap_fiori_3: ["sap_fiori_3", "sap_fiori_3_dark", "sap_fiori_3_hcw", "sap_fiori_3_hcb"],
+					sap_belize: ["sap_belize", "sap_belize_plus", "sap_belize_hcw", "sap_belize_hcb"]
+				});
+			}
+
 			// more relevant parameters
 			this.config.set("gte11150", semver.gte(props.frameworkVersion, "1.115.0"));
 		});
@@ -154,38 +169,56 @@ export default class extends Generator {
 
 	writing() {
 		const oConfig = this.config.getAll();
+		const libPath = oConfig.libURI;
 
+		// write library
 		this.sourceRoot(path.join(__dirname, "templates"));
 		glob
 			.sync("**", {
 				cwd: this.sourceRoot(),
-				nodir: true,
+				nodir: true
 			})
 			.forEach((file) => {
 				const sOrigin = this.templatePath(file);
-				let sTarget = this.destinationPath(file.replace(/^_/, "").replace("baselibrary", oConfig.libURI).replace(/\/_/, "/"));
-
+				const sTarget = this.destinationPath(file.replace(/^_/, "").replace("_library_", libPath).replace(/\/_/, "/"));
 				this.fs.copyTpl(sOrigin, sTarget, oConfig);
 			});
+
+		// write the available themes
+		this.sourceRoot(path.join(__dirname, "templates-theme"));
+		const themes = [];
+		Object.values(oConfig.availableThemes).forEach((v) => themes.push(...v));
+		themes.forEach((theme) => {
+			glob
+				.sync("**", {
+					cwd: this.sourceRoot(),
+					nodir: true
+				})
+				.forEach((file) => {
+					const sOrigin = this.templatePath(file);
+					const sTarget = this.destinationPath(file.replace("_library_", oConfig.libURI).replace("_theme_", theme));
+					this.fs.copyTpl(sOrigin, sTarget, Object.assign({ themeName: theme }, oConfig));
+				});
+		});
 	}
 
 	install() {
 		this.config.set("setupCompleted", true);
 		this.spawnCommandSync("npm", ["install"], {
-			cwd: this.destinationPath(),
+			cwd: this.destinationPath()
 		});
 	}
 
 	end() {
 		if (this.config.initrepo) {
 			this.spawnCommandSync("git", ["init", "--quiet"], {
-				cwd: this.destinationPath(),
+				cwd: this.destinationPath()
 			});
 			this.spawnCommandSync("git", ["add", "."], {
-				cwd: this.destinationPath(),
+				cwd: this.destinationPath()
 			});
 			this.spawnCommandSync("git", ["commit", "--quiet", "--allow-empty", "-m", "Initial commit"], {
-				cwd: this.destinationPath(),
+				cwd: this.destinationPath()
 			});
 		}
 	}
