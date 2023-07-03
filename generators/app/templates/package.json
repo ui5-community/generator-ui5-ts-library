@@ -36,7 +36,7 @@
 		"npm-run-all": "^4.1.5",
 		"rimraf": "^5.0.1",
 		"typescript": "^5.1.6",
-		"ui5-middleware-livereload": "^0.8.3",
+		"ui5-middleware-livereload": "^0.8.4",
 		"ui5-tooling-transpile": "^0.7.17"
 	}
 }
