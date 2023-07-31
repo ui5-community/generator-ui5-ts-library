@@ -11,7 +11,7 @@
 		"rootDir": "./",
 		"types": ["<%= tstypes %>", "@types/jquery", "@types/qunit"],
 		"paths": {
-			"<%= libURI %>/*": ["./src/<%= libURI %>/*"]
+			"<%= libURI %>/*": ["./src/<%= libURIFlat %>*"]
 		}
 	},
 	"include": ["./src/**/*", "./test/**/*"]

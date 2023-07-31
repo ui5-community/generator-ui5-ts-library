@@ -141,6 +141,7 @@ export default class extends Generator {
 			// libId + libURI + libBasePath
 			this.config.set("libId", `${props.namespace}`);
 			this.config.set("libURI", `${props.namespace.split(".").join("/")}`);
+			this.config.set("libURIFlat", `${props.flat ? "" : props.namespace.split(".").join("/") + "/"}`);
 			this.config.set(
 				"libBasePath",
 				`${props.namespace
