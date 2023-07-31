@@ -5,7 +5,11 @@ module.exports = function (config) {
 		preprocessors: {
 			"src/**/*.ts": ["ui5-transpile"],
 			"test/**/*.ts": ["ui5-transpile"]
-		},
+		},<% if (flat) { %>
+		proxies: {
+			'/resources/<%= libURI %>/': '/base/src/',
+			'/test-resources/<%= libURI %>/': '/base/test/',
+		},<% } %>
 		coverageReporter: {
 			dir: "coverage",
 			reporters: [
