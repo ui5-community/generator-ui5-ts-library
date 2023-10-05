@@ -17,7 +17,11 @@ export default {
 			qunitBridge: true,
 			useFakeTimers: false
 		},
-		module: "./{name}.qunit"
+		module: "./{name}.qunit",
+		coverage: {
+			only: ["<%= libURI %>"],
+			never: ["test-resources/<%= libURI %>"]
+		}
 	},
 	tests: {
 		// test file for the Example control

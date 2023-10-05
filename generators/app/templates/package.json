@@ -26,6 +26,7 @@
 		"@typescript-eslint/eslint-plugin": "^6.7.4",
 		"@typescript-eslint/parser": "^6.7.4",
 		"@ui5/cli": "^3.6.1",
+		"@ui5/middleware-code-coverage": "^1.1.0",
 		"@ui5/ts-interface-generator": "^0.8.1",
 		"eslint": "^8.50.0",
 		"karma": "^6.4.2",
