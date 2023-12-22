@@ -169,8 +169,10 @@ export default class extends Generator {
 				});
 			}
 
-			// more relevant parameters
-			this.config.set("gte11150", semver.gte(props.frameworkVersion, "1.115.0"));
+			// version parameters
+			this.config.set("gte1_100_0", semver.gte(props.frameworkVersion, "1.100.0"));
+			this.config.set("gte1_119_0", semver.gte(props.frameworkVersion, "1.119.0"));
+			this.config.set("gte2_0_0", semver.gte(props.frameworkVersion, "2.0.0"));
 		});
 	}
 
