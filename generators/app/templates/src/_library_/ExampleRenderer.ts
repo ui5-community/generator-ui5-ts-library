@@ -1,9 +1,10 @@
 /*!
  * ${copyright}
  */
-
-import ResourceBundle from "sap/base/i18n/ResourceBundle";
+<% if (gte1_119_0) { %>
+import Lib from "sap/ui/core/Lib";<% } else { %>
 import Core from "sap/ui/core/Core";
+import ResourceBundle from "sap/base/i18n/ResourceBundle";<% } %>
 import RenderManager from "sap/ui/core/RenderManager";
 import Example from "./Example";
 import { ExampleColor } from "./library";
@@ -21,8 +22,9 @@ export default {
 	 * @param rm The reference to the <code>sap.ui.core.RenderManager</code>
 	 * @param control The control instance to be rendered
 	 */
-	render: function (rm: RenderManager, control: Example) {
-		const i18n = Core.getLibraryResourceBundle("<%= libId %>") as ResourceBundle;
+	render: function (rm: RenderManager, control: Example) {<% if (gte1_119_0) { %>
+		const i18n = Lib.getResourceBundleFor("<%= libId %>");<% } else { %>
+		const i18n = Core.getLibraryResourceBundle("<%= libId %>") as ResourceBundle;<% } %>
 
 		rm.openStart("div", control);
 		if (control.getColor() === ExampleColor.Highlight) {
