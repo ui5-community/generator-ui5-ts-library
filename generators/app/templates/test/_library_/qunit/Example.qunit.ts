@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { ExampleColor } from "<%= libURI %>/library";
 import Example from "<%= libURI %>/Example";
 
@@ -20,7 +21,7 @@ QUnit.test("Async", function (assert) {
 	assert.expect(1);
 	return new Promise(function (resolve /*, reject */) {
 		assert.ok(true, "ok");
-		resolve();
+		resolve(true);
 	});
 });
 
@@ -49,7 +50,7 @@ QUnit.test("Test click event", function (assert) {
 	return new Promise(function (resolve /*, reject */) {
 		setTimeout(function () {
 			oExample.$().trigger(jQuery.Event("click"));
-			resolve();
+			resolve(true);
 		}, 100);
 	});
 });
