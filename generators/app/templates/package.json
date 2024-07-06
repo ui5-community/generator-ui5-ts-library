@@ -5,6 +5,17 @@
 	"author": "<%= author %>",
 	"license": "Apache-2.0",
 	"types": "dist/index.d.ts",
+  "files": [
+    ".eslintrc.js",
+    "LICENCE",
+    "README.md",
+    "tsconfig.json",
+    "ui5.yaml",
+    "dist/**/*.d.ts",
+    "dist/**/*.d.ts.map",
+    "src",
+    "test"
+  ],	
 	"scripts": {
 		"clean": "rimraf dist coverage",
 		"build": "ui5 build --clean-dest",
