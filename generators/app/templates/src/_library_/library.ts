@@ -6,8 +6,9 @@ import Lib from "sap/ui/core/Lib";
 <% } else { %>
 import ObjectPath from "sap/base/util/ObjectPath";
 <% } %>
-import * as coreLib from "sap/ui/core/library"
-coreLib; // prevent removal of unused import which is needed to load the core lib asynchronously
+
+// library dependencies must also be imported here
+import "sap/ui/core/library";
 
 /**
  * Initialization Code and shared classes of library <%= libId %>.
