@@ -1,12 +1,9 @@
 export default {
 	name: "QUnit TestSuite for <%= libId %>",
 	defaults: {
-		bootCore: true,
 		ui5: {
-			libs: "sap.ui.core,<%= libId %>",
-			theme: "<%= defaultTheme %>",
-			noConflict: true,
-			preload: "auto"
+			libs: ["sap.ui.core", "<%= libId %>"],
+			theme: "<%= defaultTheme %>"
 		},
 		qunit: {
 			version: 2,
@@ -16,8 +13,7 @@ export default {
 			version: 4,
 			qunitBridge: true,
 			useFakeTimers: false
-		},
-		module: "./{name}.qunit"
+		}
 	},
 	tests: {
 		// test file for the Example control
